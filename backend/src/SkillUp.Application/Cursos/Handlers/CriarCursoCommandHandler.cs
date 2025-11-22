@@ -2,15 +2,15 @@ using MediatR;
 using SkillUp.Application.Cursos.Commands;
 using SkillUp.Application.Cursos.Responses;
 using SkillUp.Domain.Entities;
-using SkillUp.Infra.Persistence;
+using SkillUp.Application.Persistence;
 
 namespace SkillUp.Application.Cursos.Handlers
 {
     public class CriarCursoCommandHandler : IRequestHandler<CriarCursoCommand, CursoResponse>
     {
-        private readonly SkillUpContext _context;
+        private readonly ISkillUpContext _context;
 
-        public CriarCursoCommandHandler(SkillUpContext context)
+        public CriarCursoCommandHandler(ISkillUpContext context)
         {
             _context = context;
         }

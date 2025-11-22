@@ -2,15 +2,15 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SkillUp.Application.Cursos.Commands;
 using SkillUp.Application.Cursos.Responses;
-using SkillUp.Infra.Persistence;
+using SkillUp.Application.Persistence;
 
 namespace SkillUp.Application.Cursos.Handlers
 {
     public class ObterCursoPorIdQueryHandler : IRequestHandler<ObterCursoPorIdQuery, CursoResponse>
     {
-        private readonly SkillUpContext _context;
+        private readonly ISkillUpContext _context;
 
-        public ObterCursoPorIdQueryHandler(SkillUpContext context)
+        public ObterCursoPorIdQueryHandler(ISkillUpContext context)
         {
             _context = context;
         }

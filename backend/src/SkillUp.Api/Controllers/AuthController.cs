@@ -1,7 +1,6 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SkillUp.Application.Services;
-using SkillUp.Infra.Persistence;
+using SkillUp.Application.Auth.Commands;
 
 namespace SkillUp.Api.Controllers
 {
@@ -9,51 +8,18 @@ namespace SkillUp.Api.Controllers
     [Route("auth")]
     public class AuthController : ControllerBase
     {
-        private readonly SkillUpContext _context;
-        private readonly ITokenService _tokenService;
+        private readonly IMediator _mediator;
 
-        public AuthController(SkillUpContext context, ITokenService tokenService)
+        public AuthController(IMediator mediator)
         {
-            _context = context;
-            _tokenService = tokenService;
+            _mediator = mediator;
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Email == request.Email);
-
-            if (usuario == null)
-                return Unauthorized("Usuário não encontrado");
-
-            if (!BCrypt.Net.BCrypt.Verify(request.Senha, usuario.SenhaHash))
-                return Unauthorized("Senha inválida");
-
-            var token = _tokenService.GerarToken(
-                usuario.Id,
-                usuario.Email,
-                usuario.Nome,
-                usuario.Papel.ToString()
-            );
-
-            return Ok(new
-            {
-                token,
-                usuario = new 
-                {
-                    usuario.Id,
-                    usuario.Nome,
-                    usuario.Email,
-                    Papel = usuario.Papel.ToString()
-                }
-            });
+            var result = await _mediator.Send(command);
+            return Ok(result);
         }
-    }
-
-    public class LoginRequest
-    {
-        public string Email { get; set; } = null!;
-        public string Senha { get; set; } = null!;
     }
 }

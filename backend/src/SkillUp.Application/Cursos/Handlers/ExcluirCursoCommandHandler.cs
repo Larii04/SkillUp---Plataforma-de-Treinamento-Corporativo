@@ -1,14 +1,14 @@
 using MediatR;
 using SkillUp.Application.Cursos.Commands;
-using SkillUp.Infra.Persistence;
+using SkillUp.Application.Persistence;
 
 namespace SkillUp.Application.Cursos.Handlers
 {
     public class ExcluirCursoCommandHandler : IRequestHandler<ExcluirCursoCommand, bool>
     {
-        private readonly SkillUpContext _context;
+        private readonly ISkillUpContext _context;
 
-        public ExcluirCursoCommandHandler(SkillUpContext context)
+        public ExcluirCursoCommandHandler(ISkillUpContext context)
         {
             _context = context;
         }

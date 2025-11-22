@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using SkillUp.Application.Persistence;
 using SkillUp.Domain.Entities;
 
 namespace SkillUp.Infra.Persistence
 {
-    public class SkillUpContext : DbContext
+    public class SkillUpContext : DbContext, ISkillUpContext
     {
         public SkillUpContext(DbContextOptions<SkillUpContext> options)
             : base(options)

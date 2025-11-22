@@ -66,13 +66,13 @@ namespace SkillUp.Infra.Services
                     {
                         if (File.Exists(caminhoImagem))
                         {
-                            stack.Element().Background()
+                            stack.Item()
                                 .AlignCenter()
                                 .AlignMiddle()
                                 .Image(caminhoImagem, ImageScaling.FitArea);
                         }
 
-                        stack.Element().Padding(40).AlignCenter().Column(col =>
+                        stack.Item().Padding(40).AlignCenter().Column(col =>
                         {
                             col.Item().Text("CERTIFICADO DE CONCLUSÃO")
                                 .FontSize(24).Bold();

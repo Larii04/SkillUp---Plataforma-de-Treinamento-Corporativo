@@ -1,0 +1,66 @@
+
+---
+
+# 🟦 **.gitignore COMPLETO**
+
+Crie o arquivo em:  
+**`backend/.gitignore`**
+
+---
+
+```gitignore
+# Build
+bin/
+obj/
+out/
+
+# Logs
+*.log
+logs/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+*.csproj.user
+
+# VSCode settings
+.vscode/
+.history/
+
+# Rider / JetBrains
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Backup & temp
+*.tmp
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+appsettings.Development.json
+appsettings.Local.json
+
+# EF Migrations snapshot (optional)
+*Migrations/**/*Designer.cs
+
+# Publish artifacts
+/publish/
+
+# Generated certificate files
+CertificadosGerados/
+
+# QuestPDF temp
+QuestPDF.Cache/
+
+# Node (caso tenha front acoplado)
+node_modules/
+
+# Python (caso gere PDFs com scripts)
+__pycache__/
+*.pyc

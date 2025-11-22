@@ -1,0 +1,226 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Infra\\SkillUp.Infra.csproj": {}
+  },
+  "projects": {
+    "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\SkillUp.Aplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\SkillUp.Aplication.csproj",
+        "projectName": "SkillUp.Aplication",
+        "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\SkillUp.Aplication.csproj",
+        "packagesPath": "C:\\Users\\kaue\\.nuget\\packages\\",
+        "outputPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj": {
+                "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[15.1.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj",
+        "projectName": "SkillUp.Domain",
+        "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj",
+        "packagesPath": "C:\\Users\\kaue\\.nuget\\packages\\",
+        "outputPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Infra\\SkillUp.Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Infra\\SkillUp.Infra.csproj",
+        "projectName": "SkillUp.Infra",
+        "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Infra\\SkillUp.Infra.csproj",
+        "packagesPath": "C:\\Users\\kaue\\.nuget\\packages\\",
+        "outputPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Infra\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kaue\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\SkillUp.Aplication.csproj": {
+                "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Aplication\\SkillUp.Aplication.csproj"
+              },
+              "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj": {
+                "projectPath": "F:\\Hackaton\\SkillUp---Plataforma-de-Treinamento-Corporativo\\src\\SkillUp.Domain\\SkillUp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.14.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.7.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

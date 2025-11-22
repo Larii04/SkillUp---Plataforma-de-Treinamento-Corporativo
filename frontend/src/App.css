@@ -350,7 +350,248 @@ body {
     flex-wrap: wrap;
   }
 }
-/*teste*/
+
+/* ========== GESTÃO DE CURSOS ========== */
+
+.courses-section {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px 18px 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.courses-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.courses-header-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.courses-header-count {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Tabela “fake” usando flex/grid */
+.courses-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.courses-table-head {
+  display: grid;
+  grid-template-columns: 3fr 1.4fr 1.2fr 1.3fr 2.2fr;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.courses-table-head span {
+  font-weight: 500;
+}
+
+.courses-table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.courses-table-row {
+  display: grid;
+  grid-template-columns: 3fr 1.4fr 1.2fr 1.3fr 2.2fr;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.courses-col-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.courses-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6a5cff, #8d5bff);
+}
+
+.courses-name {
+  margin: 0;
+  font-size: 14px;
+}
+
+.courses-col-text {
+  font-size: 13px;
+  color: #444;
+}
+
+/* status badge */
+.courses-status {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  text-align: center;
+}
+
+.courses-status-publicado {
+  background: #e5f7eb;
+  color: #1d7a3d;
+}
+
+.courses-status-rascunho {
+  background: #fff5e0;
+  color: #a86b00;
+}
+
+/* ações */
+.courses-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.courses-action-link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+  color: #1a1a90;
+  cursor: pointer;
+}
+
+/* responsivo */
+@media (max-width: 900px) {
+  .courses-table-head {
+    display: none;
+  }
+
+  .courses-table-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .courses-col-main {
+    width: 100%;
+  }
+
+  .courses-actions {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ========= FORMULÁRIO DE CURSO ========= */
+
+.course-form {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px 18px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.course-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group-inline {
+  margin-top: 4px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #333;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #1a1a90;
+  box-shadow: 0 0 0 2px rgba(26, 26, 144, 0.12);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-help {
+  font-size: 12px;
+  color: #777;
+}
+
+.form-checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.form-footer-note {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* responsivo */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .course-form {
+    padding: 16px 12px 20px;
+  }
+}
+
+
 
 /* =========================
 RESPONSIVO

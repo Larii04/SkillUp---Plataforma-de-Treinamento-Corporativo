@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function DashboardPage() {
-  // depois isso pode vir do backend
+  const navigate = useNavigate();
+
   const totalCursos = 24;
   const alunosInscritos = 320;
   const taxaConclusao = 82;
@@ -23,13 +24,19 @@ export function DashboardPage() {
         </div>
 
         <div className="dashboard-header-actions">
-          <button className="dashboard-button-primary">
-            + Criar curso
+          <button
+            className="dashboard-button-primary"
+            onClick={() => navigate("/dashboard/courses")}
+          >
+            Ver cursos
           </button>
 
-          <Link to="/" className="dashboard-button-secondary">
+          <button
+            className="dashboard-button-secondary"
+            onClick={() => navigate("/")}
+            >
             Sair
-          </Link>
+            </button>
         </div>
       </header>
 
@@ -47,9 +54,7 @@ export function DashboardPage() {
 
         <div className="dashboard-kpi-card">
           <span className="dashboard-kpi-label">Taxa média de conclusão</span>
-          <strong className="dashboard-kpi-value">
-            {taxaConclusao}%
-          </strong>
+          <strong className="dashboard-kpi-value">{taxaConclusao}%</strong>
         </div>
       </section>
 

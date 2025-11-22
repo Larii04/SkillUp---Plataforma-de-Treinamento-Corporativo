@@ -4,20 +4,27 @@ import { LoginPage } from "./pages/Login";
 import { RegisterPage } from "./pages/Register";
 import { ForgotPasswordPage } from "./pages/ForgotPassword";
 import { DashboardPage } from "./pages/Dashboard";
+import { CoursesPage } from "./pages/Courses";
+import { CreateCoursePage } from "./pages/CreateCourse";
+
 
 function App() {
   return (
     <Routes>
-      {/* Rotas de autenticação usando o mesmo layout */}
+      {/* Layout de autenticação */}
       <Route element={<AuthLayout />}>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Route>
 
-      {/* Dashboard em tela cheia */}
+      {/* Dashboard tela cheia */}
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/dashboard/courses" element={<CoursesPage />} />
+      <Route path="/dashboard/courses/new" element={<CreateCoursePage />} />
+
     </Routes>
+
   );
 }
 

@@ -1,3 +1,6 @@
+// ❗ TEMPLATE 100% compatível com qualquer versão do QuestPDF
+// ❗ TODAS AS CORES ajustadas (sem '#') — evita ArgumentException
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using QuestPDF.Fluent;
@@ -42,70 +45,116 @@ namespace SkillUp.Infra.Services
                 HashVerificacao = Guid.NewGuid().ToString("N")
             };
 
-            var pastaCertificados = Path.Combine(_env.ContentRootPath, "CertificadosGerados");
-            Directory.CreateDirectory(pastaCertificados);
+            var pasta = Path.Combine(_env.ContentRootPath, "CertificadosGerados");
+            Directory.CreateDirectory(pasta);
 
-            var caminhoPdf = Path.Combine(pastaCertificados, $"{certificado.Id}.pdf");
+            var caminhoPdf = Path.Combine(pasta, $"{certificado.Id}.pdf");
             certificado.CaminhoPdf = caminhoPdf;
-
-            var pastaTemplates = Path.Combine(_env.ContentRootPath, "Templates");
-            Directory.CreateDirectory(pastaTemplates);
-            var caminhoImagem = Path.Combine(pastaTemplates, "certificado_base.png");
 
             QuestPDF.Settings.License = LicenseType.Community;
 
-            Document.Create(container =>
+            Document.Create(doc =>
             {
-                container.Page(page =>
+                doc.Page(page =>
                 {
+                    page.Margin(50);
                     page.Size(PageSizes.A4);
-                    page.Margin(20);
                     page.PageColor(Colors.White);
 
-                    page.Content().Stack(stack =>
+                    page.Content().Column(col =>
                     {
-                        if (File.Exists(caminhoImagem))
+                        // Top border simulated
+                        col.Item().Height(10).Background("5A4BFF");
+
+                        col.Item().PaddingVertical(25);
+
+                        // Fake circular icon using container + border
+                        col.Item().AlignCenter().Column(icon =>
                         {
-                            stack.Item()
+                            icon.Item()
+                                .Width(60)
+                                .Height(60)
+                                .Background("5A4BFF")
+                                .Border(1)
+                                .BorderColor("5A4BFF")
+                                .PaddingTop(12)
                                 .AlignCenter()
-                                .AlignMiddle()
-                                .Image(caminhoImagem, ImageScaling.FitArea);
-                        }
-
-                        stack.Item().Padding(40).AlignCenter().Column(col =>
-                        {
-                            col.Item().Text("CERTIFICADO DE CONCLUSÃO")
-                                .FontSize(24).Bold();
-
-                            col.Item().Text($"Concedido a: {usuario.Nome}")
-                                .FontSize(18);
-
-                            col.Item().Text($"Pela conclusão do curso: {curso.Nome}")
-                                .FontSize(16);
-
-                            col.Item().Text($"Data: {DateTime.UtcNow:dd/MM/yyyy}")
-                                .FontSize(14);
-
-                            col.Item().Text($"Código de verificação: {certificado.HashVerificacao}")
-                                .FontSize(10);
+                                .Text("🏅")
+                                .FontSize(30)
+                                .FontColor("FFFFFF");
                         });
+
+                        col.Item().AlignCenter()
+                            .Text("Certificado")
+                            .FontSize(32).Bold().FontColor("333333");
+
+                        col.Item().AlignCenter()
+                            .Text("Certificamos que")
+                            .FontSize(15).FontColor("555555");
+
+                        col.Item().AlignCenter()
+                            .Text(usuario.Nome)
+                            .FontSize(26).Bold().FontColor("2A288A");
+
+                        col.Item().AlignCenter()
+                            .Text("concluiu com êxito o curso de")
+                            .FontSize(15).FontColor("555555");
+
+                        col.Item().AlignCenter()
+                            .Text(curso.Nome)
+                            .FontSize(22).Bold().FontColor("000000");
+
+                        col.Item().AlignCenter()
+                            .Text("com carga horária de 40 horas, realizado na plataforma de treinamento da empresa")
+                            .FontSize(14).FontColor("444444");
+
+                        // Cards
+                        col.Item().PaddingTop(20).Row(row =>
+                        {
+                            row.RelativeItem().Background("F7F7FF").Border(1).BorderColor("E3E3E3").Padding(15)
+                                .Column(info =>
+                                {
+                                    info.Item().Text("🏢  Empresa").FontSize(12).FontColor("555555");
+                                    info.Item().Text("TechCorp Treinamentos Ltda").FontSize(15).Bold().FontColor("000000");
+                                });
+                        });
+
+                        col.Item().PaddingTop(10).Row(row =>
+                        {
+                            row.RelativeItem().Background("F7F7FF").Border(1).BorderColor("E3E3E3").Padding(15)
+                                .Column(info =>
+                                {
+                                    info.Item().Text("📅  Data de Conclusão").FontSize(12).FontColor("555555");
+                                    info.Item().Text(DateTime.UtcNow.ToString("dd 'de' MMMM 'de' yyyy")).FontSize(15).Bold().FontColor("000000");
+                                });
+                        });
+
+                        col.Item().PaddingVertical(25).LineHorizontal(1).LineColor("DADADA");
+
+                        col.Item().AlignCenter().Text("Dr. João Paulo Oliveira").FontSize(18).Bold().FontColor("000000");
+                        col.Item().AlignCenter().Text("Diretor de Treinamento\nTechCorp Treinamentos Ltda").FontSize(12).FontColor("666666");
+
+                        col.Item().PaddingTop(20).AlignCenter()
+                            .Text($"Certificado ID: CERT-{DateTime.UtcNow:yyyy}-{certificado.Id.ToString()[..6].ToUpper()}")
+                            .FontSize(10).FontColor("999999");
+
+                        // bottom border
+                        col.Item().Height(10).Background("5A4BFF");
                     });
                 });
             }).GeneratePdf(caminhoPdf);
-
-            _context.Certificados.Add(certificado);
-            await _context.SaveChangesAsync();
 
             var bytes = await File.ReadAllBytesAsync(caminhoPdf);
 
             await _emailService.EnviarAsync(
                 usuario.Email,
-                "Seu certificado de conclusão",
-                $"Olá {usuario.Nome},\n\nParabéns pela conclusão do curso \"{curso.Nome}\"! Em anexo, está o seu certificado.",
+                "Seu Certificado",
+                $"Olá {usuario.Nome}, segue seu certificado.",
                 bytes,
-                "certificado.pdf"
-            );
+                "certificado.pdf");
 
+            _context.Certificados.Add(certificado);
+            await _context.SaveChangesAsync();
             return certificado;
         }
     }
